@@ -4,4 +4,6 @@ import androidx.fragment.app.Fragment
 
 interface Callback {
     fun replaceFragment(fragment: Fragment)
+
+    fun replaceFragmentWithoutBackStack(fragment: Fragment)
 }

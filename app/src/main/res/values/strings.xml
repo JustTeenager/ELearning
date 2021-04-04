@@ -20,4 +20,9 @@
     <string name="learned_only">Только выученные</string>
     <string name="levels">Уровни</string>
     <string name="level">Уровень</string>
+    <string name="true_answer">ПРАВИЛЬНО!</string>
+    <string name="wrong_answer">НЕВЕРНО!</string>
+    <string name="our_result">ВАШ РЕЗУЛЬТАТ:</string>
+    <string name="tyr_again">Пройти ещё раз</string>
+    <string name="end">Завершить</string>
 </resources>

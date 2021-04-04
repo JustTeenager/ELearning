@@ -6,19 +6,15 @@ import androidx.lifecycle.ViewModelProviders
 import com.project.eng_assos.databinding.ItemButtonsBinding
 import com.project.eng_assos.databinding.ItemTextLevelBinding
 import com.project.eng_assos.databinding.ItemWordInLevelBinding
-import com.project.eng_assos.model.Level
 import com.project.eng_assos.model.WordInLevel
 import com.project.eng_assos.utils.BaseHolder
-import com.project.eng_assos.utils.Callback
 import com.project.eng_assos.utils.DatabaseSingleton
 import com.project.eng_assos.utils.HolderBinding
-import com.project.eng_assos.viewmodel.LevelViewModel
+import com.project.eng_assos.view.LevelQuestionFragment
 import com.project.eng_assos.viewmodel.LiveDataWithLevel
 import com.project.eng_assos.viewmodel.WordInLevelViewModel
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 class LevelAdapter: BaseAdapter() {
     companion object{
@@ -59,20 +55,24 @@ class LevelAdapter: BaseAdapter() {
     inner class ButtonsHolder(private val binding: ItemButtonsBinding): BaseHolder(binding),
         HolderBinding<Any> {
         override fun onBind(data: Any) {
-            binding.flagLevelButton.setOnClickListener {
-                val viewModel = ViewModelProviders.of(binding.root.context as FragmentActivity).get(LiveDataWithLevel::class.java)
-                viewModel.getLiveData().observe(
-                    binding.root.context as FragmentActivity,
-                    { t ->
-                        if (t != null) {
+            val viewModel = ViewModelProviders.of(binding.root.context as FragmentActivity).get(LiveDataWithLevel::class.java)
+            viewModel.getLiveData().observe(
+                binding.root.context as FragmentActivity,
+                { t ->
+                    if (t != null) {
+                        binding.flagLevelButton.setOnClickListener {
                             t.isCompleted = true
                             Observable.just("1").subscribeOn(Schedulers.io()).subscribe {
                                 DatabaseSingleton.getInstance(binding.root.context)?.getLevelDao()?.updateLevel(t)
                             }
                         }
-                    })
-            }
-            binding.takeTestButton.setOnClickListener {  }
+
+                        binding.takeTestButton.setOnClickListener {
+                            callback.replaceFragment(LevelQuestionFragment.newInstance(t.numberLevel))
+                        }
+
+                    }
+                })
         }
 
     }

@@ -1,5 +1,7 @@
 package com.project.eng_assos.view
 
+import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -12,6 +14,7 @@ import com.project.eng_assos.databinding.ActivityDrawerBinding
 import com.project.eng_assos.utils.Callback
 import com.project.eng_assos.utils.DatabaseSingleton
 import com.project.eng_assos.utils.SharedPrefsManager
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.io.BufferedReader
 import java.io.FileNotFoundException
@@ -21,6 +24,7 @@ import java.io.InputStreamReader
 class MainActivity : AppCompatActivity(),Callback {
     private val binding:ActivityDrawerBinding by lazy { DataBindingUtil.setContentView(this,R.layout.activity_drawer) }
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,19 +36,20 @@ class MainActivity : AppCompatActivity(),Callback {
         if (fragment == null){
             fragment = MainFragment.newInstance()
         }
-        //DatabaseSingleton.getInstance(this)
-          //  ?.getLevelDao()?.getAllLevels()?.subscribeOn(Schedulers.io())?.subscribe{Log.d("tut","dbInited")}
+        val dialog = ProgressDialog(this)
         if (SharedPrefsManager.read(this,SharedPrefsManager.CODE_TO_DB_DOWNLOADING)!=SharedPrefsManager.BD_CREATED) {
-            Log.d("tut","вошли в иф по созданию")
-            DatabaseSingleton.initTheDb(this).subscribe {
-                Log.d("tut","onComplete")
+            dialog.show()
+            dialog.setCancelable(false)
+            DatabaseSingleton.initTheDb(this).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe {
                 supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment)
                     .commit()
+                dialog.dismiss()
             }
             SharedPrefsManager.write(this,SharedPrefsManager.CODE_TO_DB_DOWNLOADING,SharedPrefsManager.BD_CREATED)
         }
-        else { supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit() }
-        //supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
+        else {
+            supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit()
+        }
 
         binding.navView.setNavigationItemSelectedListener { item->
             //TODO задать логику для кнопок в navigation view
@@ -61,5 +66,10 @@ class MainActivity : AppCompatActivity(),Callback {
     override fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
             .addToBackStack(null).commit()
+    }
+
+    override fun replaceFragmentWithoutBackStack(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }

@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@{viewModel.getImage(context)}"
             android:visibility="invisible"
-            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
             android:layout_margin="@dimen/main_margin" />
 
         <TextView
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
             android:textColor="@color/white"
+            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_word"

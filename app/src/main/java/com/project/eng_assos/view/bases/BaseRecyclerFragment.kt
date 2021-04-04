@@ -1,4 +1,4 @@
-package com.project.eng_assos.view
+package com.project.eng_assos.view.bases
 
 import android.os.Bundle
 import android.view.LayoutInflater
