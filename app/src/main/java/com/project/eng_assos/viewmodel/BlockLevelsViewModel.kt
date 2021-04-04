@@ -2,6 +2,7 @@ package com.project.eng_assos.viewmodel
 
 import android.content.Context
 import android.util.Log
+import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,26 +10,17 @@ import androidx.lifecycle.ViewModel
 import com.project.eng_assos.R
 import com.project.eng_assos.model.BlocksLevel
 
-class BlockLevelsViewModel() : ViewModel() {
-
-    val data:MutableLiveData<BlocksLevel> = MutableLiveData<BlocksLevel>()
-    lateinit var range:List<Int>
-
-    fun setLiveData(level:BlocksLevel) {
-        data.value = level
-    }
-
-    fun getLiveData():LiveData<BlocksLevel>{
-        return data
-    }
+class BlockLevelsViewModel(val range: List<Int>) : BaseObservable() {
 
     fun getRange(context: Context):String{
-        Log.d("tut_tut_range",range.toString())
         return when (range){
-            0 -> context.getString(R.string.all_levels)
-            1 -> context.getString(R.string.learned_only)
-            else -> "пососи"
-            //else -> "${context.getString(R.string.levels)} ${range.first()}-${range.last()}"
+            (1..50).toList() -> context.getString(R.string.all_levels)
+            (1..10).toList() -> "${context.getString(R.string.levels)} ${range.first()}-${range.last()}"
+            (11..20).toList() -> "${context.getString(R.string.levels)} ${range.first()}-${range.last()}"
+            (21..30).toList() -> "${context.getString(R.string.levels)} ${range.first()}-${range.last()}"
+            (31..40).toList() -> "${context.getString(R.string.levels)} ${range.first()}-${range.last()}"
+            (41..50).toList() -> "${context.getString(R.string.levels)} ${range.first()}-${range.last()}"
+            else -> context.getString(R.string.learned_only)
         }
     }
 }

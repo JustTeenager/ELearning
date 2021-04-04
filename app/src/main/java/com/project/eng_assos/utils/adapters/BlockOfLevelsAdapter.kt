@@ -1,16 +1,14 @@
 package com.project.eng_assos.utils.adapters
 
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.project.eng_assos.databinding.ItemBlockLevelsBinding
 import com.project.eng_assos.databinding.ItemBlockLevelsTitleBinding
 import com.project.eng_assos.model.BlocksLevel
 import com.project.eng_assos.utils.BaseHolder
 import com.project.eng_assos.utils.HolderBinding
-import com.project.eng_assos.view.LevelsBlockFragment
-import com.project.eng_assos.view.QuestionFragment
+import com.project.eng_assos.view.RangeQuestionFragment
+import com.project.eng_assos.viewmodel.BlockLevelLiveData
 import com.project.eng_assos.viewmodel.BlockLevelsViewModel
 
 class BlockOfLevelsAdapter : BaseAdapter()  {
@@ -44,16 +42,13 @@ class BlockOfLevelsAdapter : BaseAdapter()  {
     }
 
     inner class BlockItem(val binding: ItemBlockLevelsBinding) : BaseHolder(binding),HolderBinding<BlocksLevel> {
-        val QUESTIONS_COUNT=20
         override fun onBind(data: BlocksLevel) {
-            val model = ViewModelProviders.of(binding.root.context as FragmentActivity).get(BlockLevelsViewModel::class.java)
-            //model.setLiveData(data)
-            model.range=data.range
-            Log.d("tut_data",model.range.toString())
-            model.posititon=layoutPosition-1
+            val viewModel = ViewModelProviders.of(binding.root.context as FragmentActivity).get(BlockLevelLiveData::class.java)
+            val model = BlockLevelsViewModel(data.range)
             binding.viewmodel=model
             binding.levelButton.setOnClickListener {
-                callback.replaceFragment(QuestionFragment.newInstance(QUESTIONS_COUNT))
+                viewModel.setLiveData(data)
+                callback.replaceFragment(RangeQuestionFragment.newInstance())
             }
         }
     }

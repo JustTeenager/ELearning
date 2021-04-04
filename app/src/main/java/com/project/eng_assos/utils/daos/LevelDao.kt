@@ -12,6 +12,9 @@ interface LevelDao {
     @Query("SELECT * FROM Levels")
     fun getAllLevels():Flowable<MutableList<Level>>
 
+    @Query("SELECT number FROM Levels WHERE isCompleted = 1")
+    fun getCompletedLevels():Flowable<List<Int>>
+
     @Insert
     fun insertLevel(level: Level)
 
