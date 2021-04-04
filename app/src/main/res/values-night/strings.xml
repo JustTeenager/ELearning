@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="block_of_levels_title_2">Тесты для отдельных уровней можно пройти в соответствующих уровнях</string>
+    <string name="all_levels">Все уровни</string>
+    <string name="learned_only">Только выученные</string>
+    <string name="levels">Уровни</string>
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.project.eng_assos.viewmodel.WordInLevelViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_view_radius"
+        android:layout_margin="@dimen/card_view_radius"
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_for_back"
+        >
+        <TextView
+            android:id="@+id/first_string"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="@{viewModel.firstString}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/volume_button"
+            android:layout_margin="@dimen/margin_for_text_in_cardview"/>
+        <TextView
+            android:id="@+id/second_string"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="@{viewModel.secondString}"
+            app:layout_constraintTop_toBottomOf="@+id/first_string"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/volume_button"
+            android:layout_margin="@dimen/margin_for_text_in_cardview"
+            />
+            <ImageButton
+                android:id="@+id/volume_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/grey_for_button"
+                android:layout_gravity="center|end"
+                android:layout_margin="@dimen/main_margin"
+                android:src="@drawable/volume_up"
+                android:onClick="@{()->viewModel.playSound(context)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        <ImageView
+            android:id="@+id/image_with_word"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@{viewModel.getImage(context)}"
+            app:layout_constraintTop_toBottomOf="@+id/second_string"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_for_text_in_cardview"
+            android:adjustViewBounds="true"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

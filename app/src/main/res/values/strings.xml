@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">English learning</string>
+    <string name="english_on_associated">Английский по ассоциациям</string>
+    <string name="learn">Учить</string>
+    <string name="test">Тест</string>
+    <string name="unlock">Разблокировать все уровни и отключить рекламу за $0.99</string>
+    <string name="choose_level">Выберите уровень</string>
+    <string name="flag_level">Пометить уровень как выученный</string>
+    <string name="take_test">Пройти тест по уровню</string>
+    <string name="next">Дальше</string>
+    <string name="share">ПОДЕЛИТЬСЯ</string>
+    <string name="estimate">ОЦЕНИТЬ В GOOGLE PLAY</string>
+    <string name="about_app">О ПРИЛОЖЕНИИ</string>
+    <string name="privacy_policy">Политика конфиделницальности</string>
+    <string name="navigation_drawer_open">Открыть</string>
+    <string name="navigation_drawer_close">Закрыть</string>
+    <string name="block_levels_title">Выберите блок уровней</string>
+    <string name="block_of_levels_title_2">Тесты для отдельных уровней можно пройти в соответствующих уровнях</string>
+    <string name="all_levels">Все уровни</string>
+    <string name="learned_only">Только выученные</string>
+    <string name="levels">Уровни</string>
+    <string name="level">Уровень</string>
+</resources>
