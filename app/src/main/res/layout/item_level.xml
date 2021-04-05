@@ -39,5 +39,16 @@
             android:visibility="gone"
             android:text="@{viewmodel.mark}"
             android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/done_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/done"
+            android:elevation="@dimen/elevation_text"
+            android:layout_gravity="center|start"
+            android:visibility="invisible"
+            android:layout_marginStart="@dimen/margin_text_mark"
+            />
     </FrameLayout>
 </layout>

@@ -1,13 +1,17 @@
 package com.project.eng_assos.utils.adapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.project.eng_assos.R
 import com.project.eng_assos.dagger.component.DaggerLevelsAdapterComponent
 import com.project.eng_assos.dagger.module.BindingHoldersModule
 import com.project.eng_assos.dagger.module.ContextModule
@@ -58,10 +62,20 @@ class LevelsAdapter: BaseAdapter() {
 
     inner class LevelHolder(private val binding: ItemLevelBinding): BaseHolder(binding),
         HolderBinding<Level> {
+        @SuppressLint("UseCompatLoadingForDrawables")
         override fun onBind(data: Level) {
             val viewModel = LevelViewModel(data.numberLevel,data.marksForTest)
             if (data.isTestFinished){
-                binding.markText.visibility = View.VISIBLE
+                binding.markText.visibility = VISIBLE
+            }
+            else{
+                binding.markText.visibility = INVISIBLE
+            }
+            if (data.isCompleted){
+                binding.doneImage.visibility = VISIBLE
+            }
+            else{
+                binding.doneImage.visibility = INVISIBLE
             }
             binding.levelButton.setOnClickListener {
                 callback.replaceFragment(LevelFragment.newInstance(data.numberLevel))

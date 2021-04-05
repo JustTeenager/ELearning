@@ -15,4 +15,9 @@
     <item
         android:id="@+id/privacy_policy"
         android:title="@string/privacy_policy"/>
+
+    <item
+        android:id="@+id/version_app"
+        android:title="@string/version_text"
+        android:visible="false"/>
 </menu>

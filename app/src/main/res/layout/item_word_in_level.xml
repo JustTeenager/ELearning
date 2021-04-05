@@ -41,6 +41,17 @@
             app:layout_constraintEnd_toStartOf="@+id/volume_button"
             android:layout_margin="@dimen/margin_for_text_in_cardview"
             />
+        <TextView
+            android:id="@+id/third_string"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="@{viewModel.thirdString}"
+            app:layout_constraintTop_toBottomOf="@+id/second_string"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/volume_button"
+            android:layout_margin="@dimen/margin_for_text_in_cardview"
+            />
             <ImageButton
                 android:id="@+id/volume_button"
                 android:layout_width="wrap_content"
@@ -57,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@{viewModel.getImage(context)}"
-            app:layout_constraintTop_toBottomOf="@+id/second_string"
+            app:layout_constraintTop_toBottomOf="@+id/third_string"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/margin_for_text_in_cardview"

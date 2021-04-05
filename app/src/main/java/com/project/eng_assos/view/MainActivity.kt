@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -52,12 +53,17 @@ class MainActivity : AppCompatActivity(),Callback {
         }
 
         binding.navView.setNavigationItemSelectedListener { item->
-            //TODO задать логику для кнопок в navigation view
+
             when(item.itemId){
                 R.id.share->{}
                 R.id.estimate->{}
-                R.id.about_app->{}
-                R.id.privacy_policy->{}
+                R.id.about_app->{
+
+                }
+                R.id.privacy_policy->{
+                    replaceFragment(PrivatePolicyFragment.newInstance())
+                    binding.drawerLayout.closeDrawers()
+                }
             }
             return@setNavigationItemSelectedListener true
         }

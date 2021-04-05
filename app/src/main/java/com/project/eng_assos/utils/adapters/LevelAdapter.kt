@@ -3,6 +3,7 @@ package com.project.eng_assos.utils.adapters
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
+import com.project.eng_assos.R
 import com.project.eng_assos.databinding.ItemButtonsBinding
 import com.project.eng_assos.databinding.ItemTextLevelBinding
 import com.project.eng_assos.databinding.ItemWordInLevelBinding
@@ -60,10 +61,19 @@ class LevelAdapter: BaseAdapter() {
                 binding.root.context as FragmentActivity,
                 { t ->
                     if (t != null) {
+                        if (t.isCompleted){
+                            binding.flagLevelButton.text = binding.root.context.getString(R.string.flag_level_cancel)
+                        }
                         binding.flagLevelButton.setOnClickListener {
-                            t.isCompleted = true
+                            t.isCompleted = !t.isCompleted
                             Observable.just("1").subscribeOn(Schedulers.io()).subscribe {
                                 DatabaseSingleton.getInstance(binding.root.context)?.getLevelDao()?.updateLevel(t)
+                            }
+                            if (t.isCompleted){
+                                binding.flagLevelButton.text = binding.root.context.getString(R.string.flag_level_cancel)
+                            }
+                            else{
+                                binding.flagLevelButton.text = binding.root.context.getString(R.string.flag_level)
                             }
                         }
 

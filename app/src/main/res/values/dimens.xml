@@ -9,4 +9,5 @@
     <dimen name="margin_for_text_in_cardview">10dp</dimen>
     <dimen name="card_view_radius">20dp</dimen>
     <dimen name="margin_guide_in_question">42dp</dimen>
+    <dimen name="size_image_view">250dp</dimen>
 </resources>

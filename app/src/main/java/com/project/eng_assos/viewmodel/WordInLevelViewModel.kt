@@ -12,10 +12,14 @@ import com.project.eng_assos.model.WordInLevel
 class WordInLevelViewModel(private val wordInLevel: WordInLevel, private val numberQuestion: Int):BaseObservable() {
 
     fun getFirstString():String{
-        return "$numberQuestion ${wordInLevel.word.toUpperCase()} - ${wordInLevel.transcription}"
+        return "$numberQuestion ${wordInLevel.word.toUpperCase()}"
     }
 
     fun getSecondString():String{
+        return "-${wordInLevel.transcription}"
+    }
+
+    fun getThirdString():String{
         return "- ${wordInLevel.translate}"
     }
 
