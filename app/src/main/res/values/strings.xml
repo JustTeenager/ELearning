@@ -6,6 +6,7 @@
     <string name="unlock">Разблокировать все уровни и отключить рекламу за $0.99</string>
     <string name="choose_level">Выберите уровень</string>
     <string name="flag_level">Пометить уровень как выученный</string>
+    <string name="flag_level_cancel">Пометить уровень как выученный (отменить)</string>
     <string name="take_test">Пройти тест по уровню</string>
     <string name="next">Дальше</string>
     <string name="share">ПОДЕЛИТЬСЯ</string>
@@ -25,4 +26,5 @@
     <string name="our_result">ВАШ РЕЗУЛЬТАТ:</string>
     <string name="tyr_again">Пройти ещё раз</string>
     <string name="end">Завершить</string>
+    <string name="version_text">Версия 1.0 guessthesoundgame@gmail.com</string>
 </resources>

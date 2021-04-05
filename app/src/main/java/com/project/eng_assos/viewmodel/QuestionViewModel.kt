@@ -17,7 +17,7 @@ class QuestionViewModel(private val question: Question, private val countQuestio
 
     @Bindable
     fun getNumberQuestion(): String{
-        return "${question.numberQuestion+1}/$countQuestion ${question.translate}"
+        return "${question.numberQuestion+1}/$countQuestion ${question.translate.toUpperCase()}"
     }
 
     @Bindable

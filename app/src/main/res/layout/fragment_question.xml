@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/image_word"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="@dimen/size_image_view"
+            android:layout_height="@dimen/size_image_view"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,14 +54,14 @@
             app:layout_constraintGuide_end="@dimen/margin_guide_in_question"/>
         <TextView
             android:id="@+id/text_number_question"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/text_result"
-            app:layout_constraintEnd_toStartOf="@id/next_question"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
             android:text="@{viewModel.numberQuestion}"
-            app:layout_constraintHorizontal_bias="0"
             android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_marginTop="@dimen/main_margin"/>
 
         <Button
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
-            app:layout_constraintTop_toBottomOf="@id/next_question"
+            app:layout_constraintTop_toBottomOf="@id/text_number_question"
             android:text="@{viewModel.firstText}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             style="@style/GreyButton"

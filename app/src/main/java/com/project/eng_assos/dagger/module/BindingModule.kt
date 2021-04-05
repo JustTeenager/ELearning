@@ -27,4 +27,8 @@ class BindingModule(private val inflater: LayoutInflater,private val container:V
     fun getTestResultFragmentBinding():FragmentTestResultBinding =
         DataBindingUtil.inflate(inflater,R.layout.fragment_test_result,container,false)
 
+    @Provides
+    fun getPrivatePolicyFragmentBinding():FragmentPrivatePolicyBinding =
+            DataBindingUtil.inflate(inflater,R.layout.fragment_private_policy,container,false)
+
 }
