@@ -21,21 +21,6 @@ import com.project.eng_assos.viewmodel.QuestionViewModel
 import javax.inject.Inject
 
 abstract class QuestionFragment:Fragment() {
-
-
-   /* companion object {
-        private const val KEY_TO_QUESTIONS_COUNT="key_to_questions_count"
-        private const val KEY_TO_LEVEL="key_to_level"
-        fun newInstance(count:Int, level:Int=0): QuestionFragment {
-            val args = Bundle()
-            args.putInt(KEY_TO_QUESTIONS_COUNT,count)
-            args.putInt(KEY_TO_LEVEL,level)
-            val fragment = QuestionFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }*/
-
     abstract val count:Int
     protected val questionList = mutableListOf<Question>()
 
@@ -45,7 +30,7 @@ abstract class QuestionFragment:Fragment() {
     @Inject
     lateinit var callBack:Callback
     protected var countQuestion = 0
-    protected var countCorrectAnswers = 0
+    private var countCorrectAnswers = 0
 
     protected val dialog by lazy { ProgressDialog(context) }
     override fun onCreateView(
@@ -116,7 +101,7 @@ abstract class QuestionFragment:Fragment() {
             context?.let{
                 button.setBackgroundColor(ContextCompat.getColor(it, R.color.red))
                 binding.textResult.text = it.getString(R.string.wrong_answer)
-                binding.textResult.setTextColor(ContextCompat.getColor(it,R.color.red))
+                //binding.textResult.setTextColor(ContextCompat.getColor(it,R.color.red))
             }
         }
     }

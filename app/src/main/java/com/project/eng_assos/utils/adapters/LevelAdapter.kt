@@ -65,6 +65,7 @@ class LevelAdapter: BaseAdapter() {
                             binding.flagLevelButton.text = binding.root.context.getString(R.string.flag_level_cancel)
                         }
                         binding.flagLevelButton.setOnClickListener {
+                            callback.showAd()
                             t.isCompleted = !t.isCompleted
                             Observable.just("1").subscribeOn(Schedulers.io()).subscribe {
                                 DatabaseSingleton.getInstance(binding.root.context)?.getLevelDao()?.updateLevel(t)
@@ -78,7 +79,10 @@ class LevelAdapter: BaseAdapter() {
                         }
 
                         binding.takeTestButton.setOnClickListener {
-                            callback.replaceFragment(LevelQuestionFragment.newInstance(t.numberLevel))
+                            callback.apply {
+                                showAd()
+                                replaceFragment(LevelQuestionFragment.newInstance(t.numberLevel))
+                            }
                         }
 
                     }

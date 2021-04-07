@@ -6,4 +6,6 @@ interface Callback {
     fun replaceFragment(fragment: Fragment)
 
     fun replaceFragmentWithoutBackStack(fragment: Fragment)
+
+    fun showAd()
 }

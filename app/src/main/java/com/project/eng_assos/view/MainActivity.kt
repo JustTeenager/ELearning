@@ -10,7 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.project.eng_assos.R
+import com.project.eng_assos.dagger.component.DaggerAboutAppDialogComponent
 import com.project.eng_assos.databinding.ActivityDrawerBinding
 import com.project.eng_assos.utils.Callback
 import com.project.eng_assos.utils.DatabaseSingleton
@@ -20,15 +24,22 @@ import io.reactivex.schedulers.Schedulers
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.InputStreamReader
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(),Callback {
     private val binding:ActivityDrawerBinding by lazy { DataBindingUtil.setContentView(this,R.layout.activity_drawer) }
 
+    private var mInterstitialAd: InterstitialAd? = null
+    private var TAG = "tut"
+    @Inject
+    lateinit var aboutDialog: AboutAppDialog
+
+
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        DaggerAboutAppDialogComponent.builder().build().inject(this)
         val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,
             R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         binding.drawerLayout.addDrawerListener(toggle)
@@ -58,7 +69,7 @@ class MainActivity : AppCompatActivity(),Callback {
                 R.id.share->{}
                 R.id.estimate->{}
                 R.id.about_app->{
-
+                    aboutDialog.show(supportFragmentManager,null)
                 }
                 R.id.privacy_policy->{
                     replaceFragment(PrivatePolicyFragment.newInstance())
@@ -67,6 +78,29 @@ class MainActivity : AppCompatActivity(),Callback {
             }
             return@setNavigationItemSelectedListener true
         }
+
+        MobileAds.initialize(this) {}
+        setupAds()
+    }
+
+    private fun setupAds() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(
+            this,
+            getString(R.string.ad_key_test),
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.message)
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    Log.d(TAG,Thread.currentThread().name)
+                    mInterstitialAd = interstitialAd
+                }
+            })
     }
 
     override fun replaceFragment(fragment: Fragment) {
@@ -77,5 +111,15 @@ class MainActivity : AppCompatActivity(),Callback {
     override fun replaceFragmentWithoutBackStack(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
             .commit()
+    }
+
+    override fun showAd() {
+        if (mInterstitialAd != null) {
+            Log.d(TAG,"SHOW_THE_AD")
+            mInterstitialAd?.show(this)
+        } else {
+            Log.d(TAG, "The interstitial ad wasn't ready yet.")
+        }
+        setupAds()
     }
 }

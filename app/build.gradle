@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 apply plugin: 'kotlin-parcelize'
@@ -15,7 +16,12 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments << ["dagger.gradle.incremental": "true"]
+                arguments << ["room.incremental": "true"]
+            }
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,6 +42,7 @@ android {
     buildFeatures{
         dataBinding true
     }
+
 }
 
 dependencies {
@@ -45,6 +52,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.2.6"
     implementation "androidx.room:room-rxjava2:2.2.6"
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    implementation 'com.google.firebase:firebase-ads:20.0.0'
     kapt "androidx.room:room-compiler:2.2.6"
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'

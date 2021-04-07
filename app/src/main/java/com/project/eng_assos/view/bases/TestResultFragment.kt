@@ -28,9 +28,11 @@ abstract class TestResultFragment:Fragment() {
         }
         binding.result = "$countCorrect из $countAverage"
         binding.tryAgain.setOnClickListener {
+            callback.showAd()
             replaceFragment()
         }
         binding.end.setOnClickListener {
+            callback.showAd()
             callback.replaceFragmentWithoutBackStack(MainFragment.newInstance())
         }
         writeDatabase()

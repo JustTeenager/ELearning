@@ -58,7 +58,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/text_result"
-            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintBottom_toTopOf="@id/first_answer"
+            app:layout_constraintEnd_toStartOf="@id/next_question"
             android:text="@{viewModel.numberQuestion}"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
@@ -68,7 +69,7 @@
             android:id="@+id/next_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_result"
+            app:layout_constraintTop_toTopOf="@id/text_number_question"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/next"
             android:drawableEnd="@drawable/white_star"
@@ -84,6 +85,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_number_question"
             android:text="@{viewModel.firstText}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_marginTop="@dimen/main_margin"
             style="@style/GreyButton"
             />
 
