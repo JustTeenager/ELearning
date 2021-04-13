@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +23,7 @@ import com.project.eng_assos.model.Level
 import com.project.eng_assos.utils.BaseHolder
 import com.project.eng_assos.utils.Callback
 import com.project.eng_assos.utils.HolderBinding
+import com.project.eng_assos.utils.SharedPrefsManager
 import com.project.eng_assos.view.LevelFragment
 import com.project.eng_assos.viewmodel.LevelViewModel
 import com.project.eng_assos.viewmodel.LiveDataWithLevel
@@ -83,6 +85,14 @@ class LevelsAdapter: BaseAdapter() {
                 livedata.setLiveData(data)
             }
             binding.viewmodel = viewModel
+            if (SharedPrefsManager.read(binding.root.context,
+                    SharedPrefsManager.CODE_TO_PAY) != SharedPrefsManager.PAYED
+                && data.numberLevel>5){
+                binding.levelButton.apply {
+                    isClickable = false
+                    setBackgroundColor(ActivityCompat.getColor(binding.root.context,R.color.red))
+                }
+            }
         }
 
     }

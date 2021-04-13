@@ -6,9 +6,12 @@ import android.content.Context
 object SharedPrefsManager {
     const val PREFERENCES_NAME="preferences_name"
     const val CODE_TO_DB_DOWNLOADING="code_to_downloading"
+    const val CODE_TO_PAY="code_to_pay"
     const val CODE_NO_VALUE="code_no_value"
     const val BD_CREATED="bd_created"
-    fun write(context: Context,key:String,value:String){
+    const val PAYED="payed"
+    const val NOT_PAYED="not_payed"
+    fun write(context: Context, key:String, value:String){
         val prefs=context.getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE)
         prefs.edit().putString(key,value).apply()
     }

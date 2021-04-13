@@ -1,12 +1,17 @@
 package com.project.eng_assos.utils.adapters
 
+import android.util.Log
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
+import com.project.eng_assos.R
 import com.project.eng_assos.databinding.ItemBlockLevelsBinding
 import com.project.eng_assos.databinding.ItemBlockLevelsTitleBinding
 import com.project.eng_assos.model.BlocksLevel
 import com.project.eng_assos.utils.BaseHolder
 import com.project.eng_assos.utils.HolderBinding
+import com.project.eng_assos.utils.SharedPrefsManager
 import com.project.eng_assos.view.RangeQuestionFragment
 import com.project.eng_assos.viewmodel.BlockLevelLiveData
 import com.project.eng_assos.viewmodel.BlockLevelsViewModel
@@ -47,8 +52,22 @@ class BlockOfLevelsAdapter : BaseAdapter()  {
             val model = BlockLevelsViewModel(data.range)
             binding.viewmodel=model
             binding.levelButton.setOnClickListener {
-                viewModel.setLiveData(data)
-                callback.replaceFragment(RangeQuestionFragment.newInstance())
+                if (data.range.size<2){
+                    Toast.makeText(binding.root.context,binding.root.context.getString(R.string.learned_one_level),Toast.LENGTH_SHORT)
+                        .show()
+                }else {
+                    viewModel.setLiveData(data)
+                    callback.replaceFragment(RangeQuestionFragment.newInstance())
+                }
+            }
+            if (SharedPrefsManager.read(binding.root.context,
+                    SharedPrefsManager.CODE_TO_PAY) != SharedPrefsManager.PAYED &&
+                    model.getRange(binding.root.context)
+                    != binding.root.context.getString(R.string.learned_only)) {
+                        binding.levelButton.apply {
+                        isClickable = false
+                        setBackgroundColor(ActivityCompat.getColor(binding.root.context,R.color.red))
+                }
             }
         }
     }

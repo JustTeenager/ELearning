@@ -4,7 +4,7 @@
     <dimen name="margin_guide">28dp</dimen>
     <dimen name="margin_text_mark">32dp</dimen>
     <dimen name="elevation_text">4dp</dimen>
-    <dimen name="margin_level_button">8dp</dimen>
+    <dimen name="margin_button">8dp</dimen>
     <dimen name="mini_margin">2dp</dimen>
     <dimen name="margin_for_text_in_cardview">10dp</dimen>
     <dimen name="card_view_radius">20dp</dimen>

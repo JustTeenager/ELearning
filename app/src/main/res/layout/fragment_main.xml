@@ -64,9 +64,10 @@
             android:layout_margin="@dimen/main_margin" />
 
         <Button
-            android:id="@+id/cancel_advert"
+            android:id="@+id/google_pay_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             android:text="@string/unlock"
             android:fontFamily="@font/comic_sans_ms"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
