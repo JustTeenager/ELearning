@@ -117,21 +117,18 @@ class MainActivity : AppCompatActivity(),Callback {
                     RESULT_OK ->
                         data?.let { intent ->
                             SharedPrefsManager.write(this,SharedPrefsManager.CODE_TO_PAY,SharedPrefsManager.PAYED)
-                            Log.d("tut","все хорошо")
                         }
 
                     RESULT_CANCELED -> {
                         Toast.makeText(this,
                                 getString(R.string.cancel_payment), Toast.LENGTH_SHORT)
                                 .show()
-                        Log.d("tut","отмена")
                     }
 
                     AutoResolveHelper.RESULT_ERROR -> {
                         //AutoResolveHelper.getStatusFromIntent(data)?.let {
                         //  handleError(it.statusCode)
                         //}
-                        Log.d("tut","ощибка")
                     }
                 }
             }
@@ -141,7 +138,7 @@ class MainActivity : AppCompatActivity(),Callback {
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             this,
-            getString(R.string.ad_key_test),
+            getString(R.string.ad_key),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -183,8 +180,6 @@ class MainActivity : AppCompatActivity(),Callback {
         if (SharedPrefsManager.read(this,SharedPrefsManager.CODE_TO_PAY) != SharedPrefsManager.PAYED) {
             if (mInterstitialAd != null) {
                 mInterstitialAd?.show(this)
-            } else {
-                Log.d(TAG, "The interstitial ad wasn't ready yet.")
             }
             setupAds()
         }

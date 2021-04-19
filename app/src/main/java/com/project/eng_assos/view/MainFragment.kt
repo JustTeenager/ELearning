@@ -31,7 +31,7 @@ class MainFragment: Fragment() {
     lateinit var binding:FragmentMainBinding
     @Inject
     lateinit var callback: Callback
-    private val priceCents:Long = 1
+    private val priceCents:Long = 99
     private val paymentsClient by lazy { PaymentsUtil.createPaymentsClient(activity!!) }
     private val LOAD_PAYMENT_DATA_REQUEST_CODE = 991
 

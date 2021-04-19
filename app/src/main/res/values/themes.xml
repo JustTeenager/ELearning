@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="materialButtonStyle">@style/GreenButton</item>
+        <item name="materialButtonStyle">@style/GreyButton</item>
         <item name="fontFamily">@font/comic_sans_ms</item>
     </style>
 
@@ -22,7 +22,7 @@
     </style>
 
     <style name="GreyButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/grey_for_button</item>
+        <item name="backgroundTint">@color/grey_for_back</item>
         <item name="cornerRadius">15dp</item>
     </style>
 

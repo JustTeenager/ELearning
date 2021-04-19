@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            android:backgroundTint="@color/grey_for_button"
+            android:backgroundTint="@color/grey_for_back"
             app:itemTextColor="@color/white"
             app:itemTextAppearance="@style/TextInItemMenuStyle"
             app:menu="@menu/navigation_drawer_menu" />

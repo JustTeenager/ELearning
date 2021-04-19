@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue">
+        android:background="@color/grey_for_button">
 
         <ImageView
             android:id="@+id/image_word"
@@ -29,7 +29,7 @@
             android:id="@+id/text_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textColor="@color/white"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
             app:layout_constraintEnd_toStartOf="@id/next_question"
             android:text="@{viewModel.numberQuestion}"
             android:textColor="@color/white"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_marginTop="@dimen/margin_button"/>
 
         <Button
@@ -71,6 +71,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/text_number_question"
             app:layout_constraintEnd_toEndOf="parent"
+            style="@style/GreenButton"
             android:text="@string/next"
             android:drawableEnd="@drawable/white_star"
             android:layout_marginEnd="@dimen/main_margin"
@@ -84,7 +85,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintTop_toBottomOf="@id/text_number_question"
             android:text="@{viewModel.firstText}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_marginTop="@dimen/main_margin"
             style="@style/GreyButton"
             />
@@ -97,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintTop_toBottomOf="@id/first_answer"
             android:text="@{viewModel.secondText}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             style="@style/GreyButton"/>
         <Button
             android:id="@+id/third_answer"
@@ -107,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintTop_toBottomOf="@id/second_answer"
             android:text="@{viewModel.thirdText}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             style="@style/GreyButton"/>
         <Button
             android:id="@+id/fourth_answer"
@@ -117,7 +118,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintTop_toBottomOf="@id/third_answer"
             android:text="@{viewModel.fourthText}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             style="@style/GreyButton"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

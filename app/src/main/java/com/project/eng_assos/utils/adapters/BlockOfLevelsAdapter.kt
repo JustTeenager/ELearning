@@ -72,7 +72,7 @@ class BlockOfLevelsAdapter : BaseAdapter()  {
             else{
                 binding.levelButton.apply {
                     isClickable = true
-                    setBackgroundColor(ActivityCompat.getColor(binding.root.context,R.color.green))
+                    setBackgroundColor(ActivityCompat.getColor(binding.root.context,R.color.grey_for_back))
                 }
             }
         }

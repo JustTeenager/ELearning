@@ -69,10 +69,10 @@ abstract class QuestionFragment:Fragment() {
                     //callBack.replaceFragmentWithoutBackStack(TestResultFragment.newInstance(countCorrectAnswers,count))
                 }
                 context?.let {
-                    firstAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_button))
-                    secondAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_button))
-                    thirdAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_button))
-                    fourthAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_button))
+                    firstAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_back))
+                    secondAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_back))
+                    thirdAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_back))
+                    fourthAnswer.setBackgroundColor(ContextCompat.getColor(it,R.color.grey_for_back))
                     textResult.setTextColor(ContextCompat.getColor(it,R.color.white))
                 }
                 changeClicks(true)
