@@ -93,6 +93,12 @@ class LevelsAdapter: BaseAdapter() {
                     setBackgroundColor(ActivityCompat.getColor(binding.root.context,R.color.red))
                 }
             }
+            else {
+                binding.levelButton.apply {
+                    isClickable = true
+                    setBackgroundColor(ActivityCompat.getColor(binding.root.context,R.color.green))
+                }
+            }
         }
 
     }
