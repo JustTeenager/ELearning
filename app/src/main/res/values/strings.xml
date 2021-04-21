@@ -31,6 +31,6 @@
     <string name="end">Завершить</string>
     <string name="version_text">Версия 1.0 guessthesoundgame@gmail.com</string>
     <string name="google_pay_not_available">К сожалению, Google Pay недоступен на данном устройстве</string>
-    <string name="learned_one_level">Выучите хотя бы два уровень</string>
+    <string name="learned_one_level">Выучите хотя бы два уровня</string>
     <string name="cancel_payment">Оплата отменена</string>
 </resources>
